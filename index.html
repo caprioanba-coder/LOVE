@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For You ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 8vw;
+            animation: fadeIn 2s ease-in-out;
+            padding: 0 15px;
+        }
+
+        p {
+            width: 90%;
+            margin: 15px auto;
+            font-size: 4.5vw;
+            line-height: 1.6;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .big-heart {
+            font-size: 15vw;
+            animation: beat 1.2s infinite;
+            margin-top: 10px;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hearts span {
+            position: absolute;
+            bottom: -50px;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.8);
+            animation: float 6s infinite;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-800px) scale(1.5); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .photo {
+            width: 90%;
+            max-width: 280px;
+            border-radius: 16px;
+            margin-top: 20px;
+            animation: fadeIn 3s ease-in-out;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Pop-up Love Letter */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .popup-box {
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            width: 100%;
+            max-width: 340px;
+            border-radius: 14px;
+            text-align: left;
+            animation: popUp 0.5s ease;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            margin-top: 15px;
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 5vw;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .open-btn {
+            margin-top: 25px;
+            background: #ff007f;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 5vw;
+            border-radius: 12px;
+            cursor: pointer;
+            animation: fadeIn 3.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts -->
+    <div class="hearts">
+        <span style="left: 10%; animation-delay: 0s;"></span>
+        <span style="left: 25%; animation-delay: 1s;"></span>
+        <span style="left: 40%; animation-delay: 2s;"></span>
+        <span style="left: 55%; animation-delay: 0.5s;"></span>
+        <span style="left: 70%; animation-delay: 1.5s;"></span>
+        <span style="left: 85%; animation-delay: 0.8s;"></span>
+    </div>
+
+    <h1>For <span id="herName">My Darling</span> ❤️</h1>
+
+    <div class="big-heart">💗</div>
+
+    <p id="message">
+        I love you so much and miss you darling
+    </p>
+
+    <img src="Love.jpg" class="photo">
+
+    <button class="open-btn" onclick="openPopup()">Open Love Letter 💌</button>
+
+    <!-- Pop-up -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <h2 style="font-size: 6vw;">My Love ❤️</h2>
+
+            <p id="letterText" style="font-size: 4.5vw;">
+                To my favorite person,I'm sitting here trying to put in words all these feelings I've got bubbling up.It's like I've been on this crazy love journey that started with you,and there's no end to it right.Honestly,you've not just a part of my life-you're my world.
+                Your smile? Totally the highlight of my day.And your laugh?It's like the best music to my ears.
+                So,as I'm writting this,just know that I l9ve you more than I could ever put into words.I'm super excited all about the stuff we will do together .You are really my everything-my l9ve,my forever.
+            </p>
+
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Set her name
+        document.getElementById("herName").innerText = "Norik";
+
+        // Set your main message
+        document.getElementById("message").innerText =
+            " Kasara darling nangna anga ia chonbe gipa gital chasongni love letter ine chanchiaiboha .Iade anga tarie niasane silpajaoba kema kaaibohamo .Uarangko guale mittela nangni angko masichakanina oe beben angade mande krajanaba donga nangnade dakoba anga nanga kasaane.";
+
+        // Set your love letter
+        document.getElementById("letterText").innerText =
+            "Aro nangna anga simbrasimaia dakoba maiko dakenmo chelpaa nangko nikna manjaoba nangming apsan ongjaoba anga nangko Isolo biachi pangnan dongkamaigen,aro angko senge dongaibohane daal apsan ongjaoba ambino apsan onggen ine senge dongaiboha .Uasan una agrede kattan dongja letter sena chanhpaja angade kema kabo mo.";
+
+        // Popup functions
+        function openPopup() {
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
